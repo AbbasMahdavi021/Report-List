@@ -1,5 +1,5 @@
 "use client";
-import Modal from "@/components/Modal";
+import Modal from "@/components/modal/Modal";
 import { useState } from "react";
 
 const ReportView = () => {
@@ -19,9 +19,7 @@ const ReportView = () => {
         View Latest Reports
       </button>
 
-      <Modal handleClose={() => setIsOpen(false)} isOpen={isOpen}>
-        Reports
-      </Modal>
+      <Modal handleClose={() => setIsOpen(false)} isOpen={isOpen} />
     </div>
   );
 };
