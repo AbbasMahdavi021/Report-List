@@ -7,7 +7,7 @@ const ReportView = () => {
 
   return (
     <div className="flex items-center flex-col mt-4 p-8 g-500 bg-gray-100 rounded-lg w-full min-h-96">
-      <p className="text-4xl font-bold text-gray-900 dark:text-white pb-6">
+      <p className="text-3xl font-bold text-center text-gray-900 dark:text-white pb-6">
         Reports View
       </p>
 

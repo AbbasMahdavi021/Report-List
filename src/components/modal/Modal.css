@@ -15,7 +15,7 @@
 .modal-content {
   display: flex;
   flex-direction: column;
-  width: 70%;
+  width: 80%;
   height: 80%;
   background-color: rgb(255, 255, 255);
   color: #000000;
@@ -24,10 +24,11 @@
   font-size: 2rem;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   border-radius: 10px;
-  overflow: scroll;
+  overflow-y: scroll;
 }
 
 .modal-header {
+  text-align: center;
   background-color: rgb(255, 255, 255);
   display: flex;
   width: 100%;

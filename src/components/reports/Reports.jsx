@@ -1,5 +1,5 @@
 import dummyData from "@/constants/dummyReports";
-import { GrDocumentDownload } from "react-icons/gr";
+import ReportCard from "./ReportCard";
 
 const Reports = () => {
   return (
@@ -12,16 +12,11 @@ const Reports = () => {
 
       <div className="flex flex-col">
         {dummyData.map((report, index) => (
-          <div
-            key={index}
-            className="flex flex-row text-sm p-2 border-b border-gray-200"
-          >
-            <div className="ml-4 w-24">{report.datetime}</div>
-            <div className="w-3/4">{report.reportName}</div>
-            <div className="flex justify-center w-16 text-3xl text-center">
-              <GrDocumentDownload />
-            </div>
-          </div>
+          <ReportCard
+            index={index}
+            date={report.datetime}
+            reportName={report.reportName}
+          />
         ))}
       </div>
     </div>

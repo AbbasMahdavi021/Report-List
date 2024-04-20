@@ -11,7 +11,9 @@ const Modal = ({ children, isOpen, handleClose }) => {
       <div className="modal-content">
         <div className="modal-header">
           <div />
-          <div className="ml-4">Recently Generated Reports</div>
+          <div className="ml-4 flex flex-nowrap ">
+            Recently Generated Reports
+          </div>
 
           <div className="flex space-x-4">
             <button className="border border-gray-500 border-2 rounded-lg p-1">
