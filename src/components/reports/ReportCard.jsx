@@ -1,12 +1,25 @@
 import { GrDocumentDownload } from "react-icons/gr";
 
 const ReportCard = ({ date, reportName, index }) => {
+  const formattedDate = new Date(date).toLocaleDateString("en-US", {
+    month: "2-digit",
+    day: "2-digit",
+    year: "numeric",
+  });
+  const formattedTime = new Date(date).toLocaleTimeString("en-US", {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+
   return (
     <div
       key={index}
       className="flex flex-row text-sm p-2 py-4 border-b border-gray-100"
     >
-      <div className="mx-1 w-32">{date}</div>
+      <div className="mx-1 w-32">
+        {formattedDate}
+        <div className="text-xs m-1 font-light">{formattedTime}</div>
+      </div>
       <div className=" w-3/4 overflow-hidden">
         <div className="mx-1  truncate">{reportName}</div>
       </div>
