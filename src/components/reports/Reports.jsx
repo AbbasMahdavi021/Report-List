@@ -30,7 +30,7 @@ const Reports = () => {
           <div className="flex justify-center w-24 mx-1 ">Download</div>
         </div>
 
-        <div className="flex flex-col flex-grow overflow-auto">
+        <div className="flex flex-col flex-grow overflow-auto mb-32 md:mb-24">
           {dataToDisplay.map((report, index) => (
             <ReportCard
               key={index}
@@ -42,7 +42,7 @@ const Reports = () => {
         </div>
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0 p-1 border-t border-gray-200">
+      <div className="absolute bottom-0 left-0 right-0 p-1 border-t border-gray-200 bg-white">
         <NavigationControls
           hasNextPage={end < dummyData.length}
           hasPrevPage={start > 0}
