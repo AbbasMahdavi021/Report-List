@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
+import { MdLastPage } from "react-icons/md";
+import { MdFirstPage } from "react-icons/md";
+
 const NavigationControls = ({ hasNextPage, hasPrevPage, size }) => {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -46,7 +49,7 @@ const NavigationControls = ({ hasNextPage, hasPrevPage, size }) => {
       buttons.push(
         <button
           key={i}
-          className={`p-2 text-sm m-1 border border-lightgray-500 border-1 rounded-lg ${
+          className={`text-sm mx-1 border border-lightgray-500 border-1 px-2 md:px-4 h-8 md:h-10 rounded-lg ${
             i === currentPage ? "bg-orange-500 text-white" : ""
           }`}
           onClick={() => handlePageChange(i)}
@@ -59,10 +62,11 @@ const NavigationControls = ({ hasNextPage, hasPrevPage, size }) => {
   };
 
   return (
-    <div className="m-4 flex flex-row justify-center text-2xl space-x-32">
-      <div className="p-2 w-64 flex align-center">
-        {/* Pagination buttons */}
-        <button onClick={() => handlePageChange(1)}>First</button>
+    <div className="md:m-4 my-4 flex flex-col md:flex-row w-full justify-center text-2xl space-y-2 md:space-y-0 md:space-x-32">
+      <div className="md:p-2 flex flex-wrap md:flex-nowrap items-center justify-center ">
+        <button onClick={() => handlePageChange(1)}>
+          <MdFirstPage />
+        </button>
         <button
           className="p-1 text-base"
           disabled={!hasPrevPage}
@@ -78,7 +82,9 @@ const NavigationControls = ({ hasNextPage, hasPrevPage, size }) => {
         >
           Next
         </button>
-        <button onClick={() => handlePageChange(totalPages)}>Last</button>
+        <button onClick={() => handlePageChange(totalPages)}>
+          <MdLastPage />
+        </button>
       </div>
 
       <div className="p-2 ">Rows per page: {perPage}</div>
