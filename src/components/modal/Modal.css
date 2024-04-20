@@ -15,7 +15,7 @@
 .modal-content {
   display: flex;
   flex-direction: column;
-  width: 80%;
+  width: 75%;
   height: 80%;
   background-color: rgb(255, 255, 255);
   color: #000000;
@@ -24,6 +24,12 @@
   font-size: 2rem;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   border-radius: 10px;
+}
+
+@media (max-width: 1000px) {
+  .modal-content {
+    width: 95%; /* Adjusted width for small devices */
+  }
 }
 
 .modal-header {

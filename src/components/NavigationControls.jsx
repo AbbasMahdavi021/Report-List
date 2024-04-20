@@ -11,7 +11,7 @@ const NavigationControls = ({ hasNextPage, hasPrevPage, size }) => {
   const [totalPages, setTotalPages] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
 
-  const perPage = searchParams.get("per_page") ?? "10";
+  const [perPage, setPerPage] = useState(searchParams.get("per_page") ?? "10");
 
   // Calculate total pages whenever size or perPage changes
   useEffect(() => {
@@ -24,6 +24,13 @@ const NavigationControls = ({ hasNextPage, hasPrevPage, size }) => {
     const pageParam = searchParams.get("page") ?? "1";
     setCurrentPage(Number(pageParam));
   }, [searchParams]);
+
+  // Handles changing rows per page
+  const handlePerPageChange = (e) => {
+    const selectedPerPage = parseInt(e.target.value, 10);
+    setPerPage(selectedPerPage);
+    router.push(`/?page=${currentPage}&per_page=${selectedPerPage}`);
+  };
 
   // Handles page navigation, changes URL,
   // that's used to display data in Reports.jsx
@@ -49,8 +56,8 @@ const NavigationControls = ({ hasNextPage, hasPrevPage, size }) => {
       buttons.push(
         <button
           key={i}
-          className={`text-sm mx-1 border border-lightgray-500 border-1 px-2 md:px-4 h-8 md:h-10 rounded-lg ${
-            i === currentPage ? "bg-orange-500 text-white" : ""
+          className={`text-sm mx-1 border border-1 px-2 md:px-4 h-8 md:h-10 rounded-lg ${
+            i === currentPage ? "bg-orange-600 text-white" : ""
           }`}
           onClick={() => handlePageChange(i)}
         >
@@ -62,7 +69,7 @@ const NavigationControls = ({ hasNextPage, hasPrevPage, size }) => {
   };
 
   return (
-    <div className="md:m-4 my-4 flex flex-col md:flex-row w-full justify-center text-2xl space-y-2 md:space-y-0 md:space-x-32">
+    <div className="md:m-4 my-4 flex flex-col md:flex-row w-full justify-center text-2xl space-y-2 md:space-y-0 md:space-x-24">
       <div className="md:p-2 flex flex-wrap md:flex-nowrap items-center justify-center ">
         <button onClick={() => handlePageChange(1)}>
           <MdFirstPage />
@@ -87,7 +94,24 @@ const NavigationControls = ({ hasNextPage, hasPrevPage, size }) => {
         </button>
       </div>
 
-      <div className="p-2 ">Rows per page: {perPage}</div>
+      <div className="flex justify-center items-center flex-wrap p-2 mx-3 text-sm text-base">
+        <p>Rows per page:</p>
+        <div>
+          <select
+            className="flex ml-2 border border-lightgray-500 px-2 h-8 rounded-lg"
+            value={perPage}
+            onChange={handlePerPageChange}
+          >
+            <option value="1">1</option>
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="20">20</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+          </select>
+        </div>
+      </div>
     </div>
   );
 };

@@ -25,9 +25,9 @@ const Reports = () => {
     <div className="relative w-full h-full overflow-hidden ">
       <div className="flex flex-col h-full">
         <div className="flex flex-row text-sm font-medium p-2 bg-slate-50">
-          <div className="ml-4 w-24">Date</div>
+          <div className="ml-4 w-32">Date</div>
           <div className="w-3/4">Report Name</div>
-          <div>Download</div>
+          <div className="flex justify-center w-24 mx-1 ">Download</div>
         </div>
 
         <div className="flex flex-col flex-grow overflow-auto">
@@ -42,7 +42,7 @@ const Reports = () => {
         </div>
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0 p-2 bg-gray-100">
+      <div className="absolute bottom-0 left-0 right-0 p-1 border-t border-gray-200">
         <NavigationControls
           hasNextPage={end < dummyData.length}
           hasPrevPage={start > 0}
