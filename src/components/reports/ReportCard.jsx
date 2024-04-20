@@ -1,20 +1,21 @@
+import { jsPDF } from "jspdf";
+
 const ReportCard = ({ date, reportName, index }) => {
   /* For demonstration purposes, handleDownload 
     simulates a download action. In production, 
     it would fetch files from an S3 bucket or server. */
-  const handleDownload = () => {
-    // Create a dummy data blob
-    const dummyData = `The Content of ${reportName}`;
-    const blob = new Blob([dummyData], { type: "text/plain" });
+  const downloadFile = (content, fileName, fileType) => {
+    // Create a blob with the provided content and type
+    const blob = new Blob([content], { type: fileType });
 
-    // download url and link
+    // Create download link
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.href = url;
-    link.download = reportName; //Report name has extension
-    document.body.appendChild(link);
+    link.download = fileName; // Set the download filename
 
-    //Download
+    // Append link to the body and trigger download
+    document.body.appendChild(link);
     link.click();
 
     // Clean up
@@ -22,6 +23,22 @@ const ReportCard = ({ date, reportName, index }) => {
     document.body.removeChild(link);
   };
 
+  const handleDownload = () => {
+    // Determine file extension from reportName
+    const fileExtension = reportName.split(".").pop().toLowerCase();
+
+    if (fileExtension === "pdf") {
+      // Handle PDF download separately
+      const doc = new jsPDF();
+      doc.text(`The Content of ${reportName}`, 10, 10); // Adjust position and content as needed
+      const pdfContent = doc.output("blob");
+      downloadFile(pdfContent, reportName, "application/pdf");
+    } else {
+      // Generic file download for other file types
+      const dummyData = `The Content of ${reportName}`;
+      downloadFile(dummyData, reportName, `application/${fileExtension}`);
+    }
+  };
   const formattedDate = new Date(date).toLocaleDateString("en-US", {
     month: "2-digit",
     day: "2-digit",
