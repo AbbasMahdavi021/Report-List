@@ -61,7 +61,7 @@ const ReportCard = ({ date, reportName, index }) => {
       <div className=" w-3/4 overflow-hidden">
         <div className="mx-1  truncate">{reportName}</div>
       </div>
-      <div className="flex justify-center w-16 mx-1 text-2xl">
+      <div className="flex justify-center w-24 text-2xl">
         <img
           onClick={handleDownload}
           className="w-9 cursor-pointer"
