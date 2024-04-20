@@ -1,5 +1,5 @@
 import Image from "next/image";
-
+import ReportView from "@/components/ReportView";
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center p-24">
@@ -27,12 +27,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div>
-        <button>View Latest Reports</button>
-      </div>
-      <div>
-        <button>View Latest Reports</button>
-      </div>
+      <ReportView />
     </main>
   );
 }
