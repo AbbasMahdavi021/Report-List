@@ -1,4 +1,4 @@
-import { GrDocumentDownload } from "react-icons/gr";
+import { TbFileDownload } from "react-icons/tb";
 
 const ReportCard = ({ date, reportName, index }) => {
   const formattedDate = new Date(date).toLocaleDateString("en-US", {
@@ -23,8 +23,8 @@ const ReportCard = ({ date, reportName, index }) => {
       <div className=" w-3/4 overflow-hidden">
         <div className="mx-1  truncate">{reportName}</div>
       </div>
-      <div className="flex justify-center w-24 mx-1 text-3xl">
-        <GrDocumentDownload />
+      <div className="flex justify-center w-24 mx-1 text-2xl">
+        <img className="w-9" src="/document-download.svg" alt="download" />
       </div>
       <div className="flex justify-start"></div>
     </div>
