@@ -1,7 +1,4 @@
-"use client";
-
 import { useSearchParams } from "next/navigation";
-
 import NavigationControls from "../NavigationControls";
 import ReportCard from "./ReportCard";
 
@@ -29,7 +26,6 @@ const Reports = ({ sortedData }) => {
           {dataToDisplay.map((report, index) => (
             <ReportCard
               key={index}
-              index={index}
               date={report.datetime}
               reportName={report.reportName}
             />

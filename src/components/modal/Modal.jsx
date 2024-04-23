@@ -5,11 +5,11 @@ import { BiFilterAlt } from "react-icons/bi";
 import dummyData from "@/constants/dummyReports";
 import { useState } from "react";
 
-const Modal = ({ children, isOpen, handleClose }) => {
+const Modal = ({ isOpen, handleClose }) => {
+  if (!isOpen) return null;
+
   const [filter, setFilter] = useState("");
   const [showDropdown, setShowDropdown] = useState(false); //
-
-  if (!isOpen) return null;
 
   const sortedReports = [...dummyData].sort((a, b) => {
     if (filter === "date") {
@@ -26,8 +26,6 @@ const Modal = ({ children, isOpen, handleClose }) => {
     setFilter(selectedFilter);
     setShowDropdown(false); // Close the dropdown after selecting a filter
   };
-
-  console.log(sortedReports);
 
   return (
     <div className="modal">
@@ -47,7 +45,7 @@ const Modal = ({ children, isOpen, handleClose }) => {
                 <BiFilterAlt />
               </button>
               {showDropdown && (
-                <div className="absolute z-10 bg-white border border-gray-300 mt-2 rounded shadow-lg">
+                <div className="absolute z-10 bg-white border border-gray-300 mt-2 p-1 rounded shadow-lg">
                   <button
                     onClick={() => handleFilterChange("date")}
                     className="hover:bg-slate-50 block w-full py-2 px-4 text-left"
@@ -72,8 +70,6 @@ const Modal = ({ children, isOpen, handleClose }) => {
             </button>
           </div>
         </div>
-
-        {children}
 
         <Reports sortedData={sortedReports} />
       </div>

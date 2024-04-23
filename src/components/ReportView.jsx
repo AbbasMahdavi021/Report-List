@@ -1,8 +1,17 @@
 "use client";
 import Modal from "@/components/modal/Modal";
-import { useState } from "react";
+import { useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
 
 const ReportView = () => {
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    if (searchParams.get("page")) {
+      setIsOpen(true);
+    }
+  });
+
   const [isOpen, setIsOpen] = useState(false);
 
   return (
