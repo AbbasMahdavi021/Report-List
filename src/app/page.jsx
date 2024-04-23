@@ -1,5 +1,7 @@
 import Image from "next/image";
 import ReportView from "@/components/ReportView";
+import { Suspense } from "react";
+
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center p-24">
@@ -31,8 +33,9 @@ export default function Home() {
           </a>
         </div>
       </div>
-
-      <ReportView />
+      <Suspense>
+        <ReportView />
+      </Suspense>
     </main>
   );
 }
