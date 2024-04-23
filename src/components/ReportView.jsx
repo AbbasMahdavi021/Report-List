@@ -1,18 +1,27 @@
 "use client";
 import Modal from "@/components/modal/Modal";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const ReportView = () => {
   const searchParams = useSearchParams();
+  const router = useRouter();
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    if (searchParams.get("page")) {
-      setIsOpen(true);
-    }
-  });
+    if (!isOpen) {
+      if (searchParams.get("page")) {
+        console.log("Opening", isOpen);
 
-  const [isOpen, setIsOpen] = useState(false);
+        setIsOpen(true);
+      }
+    }
+  }, [searchParams]);
+
+  const handleClose = () => {
+    setIsOpen(false);
+    router.push("./");
+  };
 
   return (
     <div className="flex items-center flex-col mt-4 p-8 g-500 bg-gray-100 rounded-lg w-full min-h-96">
@@ -28,7 +37,7 @@ const ReportView = () => {
         View Latest Reports
       </button>
 
-      <Modal handleClose={() => setIsOpen(false)} isOpen={isOpen} />
+      <Modal handleClose={handleClose} isOpen={isOpen} />
     </div>
   );
 };
