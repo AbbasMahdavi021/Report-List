@@ -6,10 +6,10 @@ import dummyData from "@/constants/dummyReports";
 import { useState } from "react";
 
 const Modal = ({ isOpen, handleClose }) => {
-  if (!isOpen) return null;
-
   const [filter, setFilter] = useState("");
   const [showDropdown, setShowDropdown] = useState(false); //
+
+  if (!isOpen) return null;
 
   const sortedReports = [...dummyData].sort((a, b) => {
     if (filter === "date") {

@@ -9,12 +9,8 @@ const ReportView = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    if (!isOpen) {
-      if (searchParams.get("page")) {
-        console.log("Opening", isOpen);
-
-        setIsOpen(true);
-      }
+    if (searchParams.get("page")) {
+      setIsOpen(true);
     }
   }, [searchParams]);
 
